@@ -27,8 +27,12 @@ int hextoint(char num_arr[]){
 		
 		if(num_arr[i] >= 'A' && num_arr[i]<='F')
 			value =value+((num_arr[i] - 55) *(pow(16,j++)));
-		else
+		else if(num_arr[i] >='0' && num_arr[i] <='9')
 			value= value+((num_arr[i] -'0')* (pow(16,j++)));
+		else{
+			printf("Invalid Entry\n");
+			exit(1);
+		}
 
 	}
 	
