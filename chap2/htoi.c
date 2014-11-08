@@ -1,7 +1,10 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define ARRSIZE 1000
 #include <math.h>
+#include<string.h>
+#include<ctype.h>
+
+#define ARRSIZE 1000
 int hextoint(char []);
 int str_len(char[]);
 
@@ -21,8 +24,9 @@ int hextoint(char num_arr[]){
 	int len;
 
 	len= str_len(num_arr);
+	for(i=2;num_arr[i] !='\0';i++)
+		num_arr[i]=toupper(num_arr[i]);
 	
-		
 	for(i=len-1; i>=2;i--){
 		
 		if(num_arr[i] >= 'A' && num_arr[i]<='F')
