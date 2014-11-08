@@ -1,3 +1,10 @@
+/****  Note: compilation might failed when done regularly
+       use -lm option with gcc to include the math library
+       Ex: gcc htoi.c -lm -o htoi
+						*******/
+		
+
+
 #include<stdio.h>
 #include<stdlib.h>
 #include <math.h>
@@ -24,21 +31,30 @@ int hextoint(char num_arr[]){
 	int len;
 
 	len= str_len(num_arr);
+
 	for(i=2;num_arr[i] !='\0';i++)
 		num_arr[i]=toupper(num_arr[i]);
-	
-	for(i=len-1; i>=2;i--){
-		
-		if(num_arr[i] >= 'A' && num_arr[i]<='F')
-			value =value+((num_arr[i] - 55) *(pow(16,j++)));
-		else if(num_arr[i] >='0' && num_arr[i] <='9')
-			value= value+((num_arr[i] -'0')* (pow(16,j++)));
-		else{
-			printf("Invalid Entry\n");
-			exit(1);
-		}
 
+	if(num_arr[0]=='0' && (num_arr[1]=='x' || num_arr[1]=='X')){	
+		for(i=len-1; i>=2;i--){
+		
+			if(num_arr[i] >= 'A' && num_arr[i]<='F')
+				value =value+((num_arr[i] - 55) *(pow(16,j++)));
+			else if(num_arr[i] >='0' && num_arr[i] <='9')
+				value= value+((num_arr[i] -'0')* (pow(16,j++)));
+			else{
+				printf("Invalid Entry\n");
+				exit(1);
+			}			
+
+		}
 	}
+	
+	else{
+		printf("Not a Hex value\n");
+		exit(1);
+	}
+		
 	
 	return value;
 }
