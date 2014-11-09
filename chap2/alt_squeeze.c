@@ -29,9 +29,9 @@ void match_squeeze(char str1 [], char str2 []){
 
 		k=0;
 		for(j=0; str1[j]!='\0';j++){
-			while(str1[j]==str2[i])
-				j++;
-			str1[k++]=str1[j];
+			
+			if(str1[j]!=str2[i])
+				str1[k++]=str1[j];
 		}
 		str1[k]='\0';
 		
